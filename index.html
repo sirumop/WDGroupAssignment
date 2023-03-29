@@ -13,8 +13,33 @@
     <script src="script.js"></script>
 
 </head>
-
 <body>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form >
+                    <div class="mb-3">
+                        <input class="form-control " id="loginID" name="loginID" placeholder="ID" type="text"  />
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control" id="pwd" name="pwd" placeholder="Password" type="password" />
+                    </div>
+                    
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Login</button>
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Sign-up</button>
+                    </div>
+                </form>
+            </div>
+           
+          </div>
+        </div>
+      </div>
     <div class="container-fluid d-flex flex-column vh-100">
         <header>
             <div class="top ">
@@ -38,6 +63,11 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link">CONTACT US</a>
+                                </li>
+                                <li>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        Login
+                                      </button>
                                 </li>
                             </ul>
 
