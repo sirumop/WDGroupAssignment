@@ -5,42 +5,65 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Movie Lovers</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <script src="jquery/dist/jquery.min.js"></script>
-    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 </head>
+
 <body>
+    <!-- modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form name="loginForm" id="loginForm">
+                        <div class="mb-3">
+                            <input class="form-control " id="loginID" name="loginID" placeholder="ID" type="text" />
+                        </div>
+                        <div class="mb-3">
+                            <input class="form-control" id="pwd" name="pwd" placeholder="Password" type="password" />
+                        </div>
+                        <div class="invalid-feedback" id="Feedback"></div>
+                        <div class="text-center mt-1">
+                            <button type="submit" id="btnLogin" class="btn btn-secondary">Login</button>
+                            <button type="button" id="btnRegLink" class="btn btn-primary">Sign-up</button>
+                        </div>
+                    </form>
+                    <form name="regForm" id="regForm">
+                        <div class="mb-3">
+                            <input class="form-control " id="loginID" name="loginID" placeholder="Please Enter ID"
+                                type="text" />
+                            <div class="invalid-feedback" id="idFeedback"></div>
+                        </div>
+                        <div class="mb-3">
+                            <input class="form-control" id="email" name="email"
+                                placeholder="Please Enter email  address" type="text" />
+                            <div class="invalid-feedback" id="emailFeedback"></div>
+                        </div>
+                        <div class="mb-3">
+                            <input class="form-control" id="pwd" name="pwd" placeholder="Password" type="text" />
+                            <div class="invalid-feedback" id="passwordFeedback"></div>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" id="btnReg" class="btn btn-primary">Register</button>
+                        </div>
+                    </form>
+
+                </div>
+
             </div>
-            <div class="modal-body">
-                <form >
-                    <div class="mb-3">
-                        <input class="form-control " id="loginID" name="loginID" placeholder="ID" type="text"  />
-                    </div>
-                    <div class="mb-3">
-                        <input class="form-control" id="pwd" name="pwd" placeholder="Password" type="password" />
-                    </div>
-                    
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Login</button>
-                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Sign-up</button>
-                    </div>
-                </form>
-            </div>
-           
-          </div>
         </div>
-      </div>
+    </div>
     <div class="container-fluid d-flex flex-column vh-100">
+        <!--Header-->
         <header>
             <div class="top ">
                 <nav class="navbar navbar-expand-lg bg-white">
@@ -50,24 +73,30 @@
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse " id="menuNav">
-                            <a class="navbar-brand"><img id="logo" src="images/logo.png" class="img-responsive" alt="logo"></a>
+                            <a class="navbar-brand"><img id="logo" src="images/logo.png" class="img-responsive"
+                                    alt="logo"></a>
                             <ul class="navbar-nav ms-auto mb-0 mb-lg-0">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                    <a class="nav-link " aria-current="page" href="index.html">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">TOP 100</a>
+                                    <a class="nav-link" onclick="checkPermit('toplist.html')">TOP 100</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link">Actors</a>
+                                    <a class="nav-link" onclick="checkPermit('actors.html')">Actors</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link">CONTACT US</a>
+                                    <a class="nav-link" href="contactus.html">Contact us</a>
                                 </li>
-                                <li>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <li id="loginInfo">
+                                    <button id="modalBtn" type="button" class="btn btn-primary login"
+                                        data-bs-toggle="modal" data-bs-target="#exampleModal">
                                         Login
-                                      </button>
+                                    </button>
+
+                                    <button type="button" class="btn btn-primary user" id="btnLogout">
+                                        <i class="bi bi-person user" id="userLoginID">!!!</i>
+                                    </button>
                                 </li>
                             </ul>
 
@@ -75,58 +104,66 @@
                     </div>
                 </nav>
             </div>
-
         </header>
-        
+        <!--Main-->
         <main class="flex-grow-1">
             <div class="mainDiv">
                 <section class="mt-5">
                     <!--top 3 -->
                     <div class="row row1 ">
                         <div class="col-12 p-0">
-                            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" style="border-radius:5px;">
-                                
-                                <div class="carousel-inner">
+                            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel"
+                                style="border-radius:5px;">
+
+                                <div class="carousel-inner" id="top3List">
+                                    <!--s: Top 3 movie -->
                                     <div class="carousel-item active rounded" data-bs-interval="100000">
                                         <div class="row">
                                             <div class="col-5 p-0">
-                                            <img src="https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg"
-                                            class="d-block rounded" alt="...">
+                                                <img src="https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg"
+                                                    class="d-block rounded" alt="...">
                                             </div>
                                             <div class="col-7 border rounded detail text-white ">
                                                 <p>
-                                                    <h2>The Shawshank Redemption</h2>
-                                                    rank :1 <br>
-                                                    rating : 9.3<br>
-                                                    released year : 1994<br>
-                                                    genre : Drama
-                                                    director: Frank Darabont
+                                                <h2>The Shawshank Redemption</h2>
+                                                rank :1 <br>
+                                                rating : 9.3<br>
+                                                released year : 1994<br>
+                                                genre : Drama<br>
+                                                director: Frank Darabont
+                                                <br> <br><br>
 
                                                 </p>
-                                                <iframe width="560" height="315" src="https://www.youtube.com/embed/NmzuHjWmXOc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                <iframe width="560" height="315"
+                                                    src="https://www.youtube.com/embed/NmzuHjWmXOc" frameborder="0"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowfullscreen></iframe>
 
                                             </div>
                                         </div>
-                                        
                                     </div>
+                                    <!--e: Top 3 movie-->
                                     <div class="carousel-item rounded" data-bs-interval="4000">
                                         <div class="row">
                                             <div class="col-5">
-                                            <img src="https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg"
-                                            class="d-block rounded" alt="...">
+                                                <img src="https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg"
+                                                    class="d-block rounded" alt="...">
                                             </div>
                                             <div class="col-7 border rounded detail text-white ">
                                                 <p>
-                                                    <h2>The Shawshank Redemption</h2>
-                                                    rank :1 <br>
-                                                    rating : 9.3<br>
-                                                    released year : 1994<br>
-                                                    genre : Drama <br>
-                                                    director: Frank Darabont<br>
-                
-        ]
+                                                <h2>The Shawshank Redemption</h2>
+                                                rank :1 <br>
+                                                rating : 9.3<br>
+                                                released year : 1994<br>
+                                                genre : Drama <br>
+                                                director: Frank Darabont<br>
+
+                                                ]
                                                 </p>
-                                                <iframe width="560" height="315" src="https://www.youtube.com/embed/NmzuHjWmXOc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                <iframe width="560" height="315"
+                                                    src="https://www.youtube.com/embed/NmzuHjWmXOc" frameborder="0"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowfullscreen></iframe>
 
                                             </div>
                                         </div>
@@ -134,238 +171,201 @@
                                     <div class="carousel-item rounded" data-bs-interval="1000">
                                         <div class="row">
                                             <div class="col-5">
-                                            <img src="https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg"
-                                            class="d-block rounded" alt="...">
+                                                <img src="https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg"
+                                                    class="d-block rounded" alt="...">
                                             </div>
                                             <div class="col-7 border rounded detail text-white ">
                                                 <p>
-                                                    <h2>The Shawshank Redemption</h2>
-                                                    rank :1 <br>
-                                                    rating : 9.3<br>
-                                                    released year : 1994<br>
-                                                    genre : Drama
-                                                    director: Frank Darabont
+                                                <h2>The Shawshank Redemption</h2>
+                                                rank :1 <br>
+                                                rating : 9.3<br>
+                                                released year : 1994<br>
+                                                genre : Drama
+                                                director: Frank Darabont
 
                                                 </p>
-                                                <iframe width="560" height="315" src="https://www.youtube.com/embed/NmzuHjWmXOc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                <iframe width="560" height="315"
+                                                    src="https://www.youtube.com/embed/NmzuHjWmXOc" frameborder="0"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowfullscreen></iframe>
 
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide="prev">
+                                <button class="carousel-control-prev" type="button"
+                                    data-bs-target="#carouselExampleSlidesOnly" data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Previous</span>
-                                  </button>
-                                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide="next">
+                                </button>
+                                <button class="carousel-control-next" type="button"
+                                    data-bs-target="#carouselExampleSlidesOnly" data-bs-slide="next">
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Next</span>
-                                  </button>
+                                </button>
                             </div>
                         </div>
 
                     </div>
-                    
-                    
-                    <!--list of top 100 -->
                     <div class="row2 my-5 py-2">
-                        <h1 class="text-white">Top 100 List</h1>
-                        <div class="row row-cols-1 row-cols-md-6 g-4 bg_yellow py-3">
-
-                            <!-- card1 -->
-                            <div class="col">
-                                <div class="card bg-dark text-white" style="max-width: 200px;">
-                                    <img src="https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg"
-                                        class="card-img" alt="...">
-                                        <div class="position-absolute top-0 end-0 m-1">
-                                            <span class="badge bg-danger">Likes: 42</span>
-                                        </div>
-                                    <img src="./images/play.png" class="position-absolute top-50 start-50 translate-middle" alt="Play" width="64" height="64">
-                                    <div class="card-img-overlay d-flex flex-column justify-content-end align-items-end ">
-                                        <h5 class="card-title" >Card title</h5>
-
+                        <h1 class="text-white">Top 30 List</h1>
+                        <div class="container border ">
+                            <div class="movies-container" id="top100list">
+                                <!--Box 1-->
+                                <div class="box">
+                                    <div class="box-img">
+                                        <img class="rounded"
+                                            src="https://i.pinimg.com/564x/25/82/b4/2582b4a9b2174193380ad366886ee5a3.jpg">
                                     </div>
+                                    <h4>The Shawshank Redemption</h4>
+
+                                </div>
+                                <!--Box 1-->
+                                <div class="box">
+                                    <div class="box-img">
+                                        <img class="rounded"
+                                            src="https://i.pinimg.com/564x/25/82/b4/2582b4a9b2174193380ad366886ee5a3.jpg">
+                                    </div>
+                                    <h4>The Shawshank Redemption</h4>
+
+                                </div>
+                                <!--Box 1-->
+                                <div class="box">
+                                    <div class="box-img">
+                                        <img class="rounded"
+                                            src="https://i.pinimg.com/564x/25/82/b4/2582b4a9b2174193380ad366886ee5a3.jpg">
+                                    </div>
+                                    <h4>The Shawshank Redemption</h4>
+
+                                </div>
+                                <!--Box 1-->
+                                <div class="box">
+                                    <div class="box-img">
+                                        <img class="rounded"
+                                            src="https://i.pinimg.com/564x/25/82/b4/2582b4a9b2174193380ad366886ee5a3.jpg">
+                                    </div>
+                                    <h4>The Shawshank Redemption</h4>
+
+                                </div>
+                                <!--Box 5-->
+                                <div class="box">
+                                    <div class="box-img">
+                                        <img
+                                            src="https://i.pinimg.com/564x/ae/52/c7/ae52c70c87b27c2f697da45232d6a09b.jpg">
+                                    </div>
+                                    <h3>The Shawshank Redemption</h3>
+                                    <p>rank :1 </p>
+                                    <p>rating : 9.3 </p>
+                                    <p>released year : 1994
+                                    <p>
+                                    <p>genre : Drama </p>
+                                    <p>Director: Frank Darabont
+                                    <p>
+                                </div>
+                                <!--Box 6-->
+                                <div class="box">
+                                    <div class="box-img">
+                                        <img
+                                            src="https://i.pinimg.com/564x/77/be/a5/77bea5fc87f021b60c741775bfb32856.jpg">
+                                    </div>
+                                    <h3>The Shawshank Redemption</h3>
+                                    <p>rank :1 </p>
+                                    <p>rating : 9.3 </p>
+                                    <p>released year : 1994
+                                    <p>
+                                    <p>genre : Drama </p>
+                                    <p>Director: Frank Darabont
+                                    <p>
+                                </div>
+                                <!--Box 7-->
+                                <div class="box">
+                                    <div class="box-img">
+                                        <img
+                                            src="https://i.pinimg.com/564x/ea/48/65/ea4865b148ff63f52153f5a08c90ea06.jpg">
+                                    </div>
+                                    <h3>The Shawshank Redemption</h3>
+                                    <p>rank :1 </p>
+                                    <p>rating : 9.3 </p>
+                                    <p>released year : 1994
+                                    <p>
+                                    <p>genre : Drama </p>
+                                    <p>Director: Frank Darabont
+                                    <p>
+                                </div>
+                                <!--Box 8-->
+                                <div class="box">
+                                    <div class="box-img">
+                                        <img
+                                            src="https://i.pinimg.com/564x/64/19/4b/64194b82e08eecc0b06b7b2c02e1716e.jpg">
+                                    </div>
+                                    <h3>The Shawshank Redemption</h3>
+                                    <p>rank :1 </p>
+                                    <p>rating : 9.3 </p>
+                                    <p>released year : 1994
+                                    <p>
+                                    <p>genre : Drama </p>
+                                    <p>Director: Frank Darabont
+                                    <p>
+                                </div>
+                                <!--Box 9-->
+                                <div class="box">
+                                    <div class="box-img">
+                                        <img
+                                            src="https://i.pinimg.com/564x/6d/0e/5a/6d0e5a891e9e78d00bd2c27c00019e50.jpg">
+                                    </div>
+                                    <h3>The Shawshank Redemption</h3>
+                                    <p>rank :1 </p>
+                                    <p>rating : 9.3 </p>
+                                    <p>released year : 1994
+                                    <p>
+                                    <p>genre : Drama </p>
+                                    <p>Director: Frank Darabont
+                                    <p>
+                                </div>
+                                <!--box 10-->
+                                <div class="box">
+                                    <div class="box-img">
+                                        <img
+                                            src="https://i.pinimg.com/564x/bb/5e/fc/bb5efc6bb72412b767c7917e574a153d.jpg">
+                                    </div>
+                                    <h3>The Shawshank Redemption</h3>
+                                    <p>rank :1 </p>
+                                    <p>rating : 9.3 </p>
+                                    <p>released year : 1994
+                                    <p>
+                                    <p>genre : Drama </p>
+                                    <p>Director: Frank Darabont
+                                    <p>
                                 </div>
                             </div>
-                            <!-- card2 -->
-                            <div class="col">
-                                <div class="card bg-dark text-white" style="max-width: 200px;">
-                                    <img src="https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg"
-                                        class="card-img" alt="...">
-                                        <div class="position-absolute top-0 end-0 m-1">
-                                            <span class="badge bg-danger">Likes: 42</span>
-                                        </div>
-                                    <img src="./images/play.png" class="position-absolute top-50 start-50 translate-middle" alt="Play" width="64" height="64">
-                                    <div class="card-img-overlay d-flex flex-column justify-content-end align-items-end ">
-                                        <h5 class="card-title" >Card title</h5>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- card3 -->
-                            <div class="col">
-                                <div class="card bg-dark text-white" style="max-width: 200px;">
-                                    <img src="https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg"
-                                        class="card-img" alt="...">
-                                        <div class="position-absolute top-0 end-0 m-1">
-                                            <span class="badge bg-danger">Likes: 42</span>
-                                        </div>
-                                    <img src="./images/play.png" class="position-absolute top-50 start-50 translate-middle" alt="Play" width="64" height="64">
-                                    <div class="card-img-overlay d-flex flex-column justify-content-end align-items-end ">
-                                        <h5 class="card-title" >Card title</h5>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- next 3  -->
-                            <div class="col">
-                                <div class="card bg-dark text-white" style="max-width: 200px;">
-                                    <img src="https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg"
-                                        class="card-img" alt="...">
-                                        <div class="position-absolute top-0 end-0 m-1">
-                                            <span class="badge bg-danger">Likes: 42</span>
-                                        </div>
-                                    <img src="./images/play.png" class="position-absolute top-50 start-50 translate-middle" alt="Play" width="64" height="64">
-                                    <div class="card-img-overlay d-flex flex-column justify-content-end align-items-end ">
-                                        <h5 class="card-title" >Card title</h5>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card bg-dark text-white" style="max-width: 200px;">
-                                    <img src="https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg"
-                                        class="card-img" alt="...">
-                                        <div class="position-absolute top-0 end-0 m-1">
-                                            <span class="badge bg-danger">Likes: 42</span>
-                                        </div>
-                                    <img src="./images/play.png" class="position-absolute top-50 start-50 translate-middle" alt="Play" width="64" height="64">
-                                    <div class="card-img-overlay d-flex flex-column justify-content-end align-items-end ">
-                                        <h5 class="card-title" >Card title</h5>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card bg-dark text-white" style="max-width: 200px;">
-                                    <img src="https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg"
-                                        class="card-img" alt="...">
-                                        <div class="position-absolute top-0 end-0 m-1">
-                                            <span class="badge bg-danger">Likes: 42</span>
-                                        </div>
-                                    <img src="./images/play.png" class="position-absolute top-50 start-50 translate-middle" alt="Play" width="64" height="64">
-                                    <div class="card-img-overlay d-flex flex-column justify-content-end align-items-end ">
-                                        <h5 class="card-title" >Card title</h5>
-
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
-                        <div class="row row-cols-1 row-cols-md-6 g-4 bg_yellow py-3">
 
-                            <!-- card1 -->
-                            <div class="col">
-                                <div class="card bg-dark text-white" style="max-width: 200px;">
-                                    <img src="https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg"
-                                        class="card-img" alt="...">
-                                        <div class="position-absolute top-0 end-0 m-1">
-                                            <span class="badge bg-danger">Likes: 42</span>
-                                        </div>
-                                    <img src="./images/play.png" class="position-absolute top-50 start-50 translate-middle" alt="Play" width="64" height="64">
-                                    <div class="card-img-overlay d-flex flex-column justify-content-end align-items-end ">
-                                        <h5 class="card-title" >Card title</h5>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- card2 -->
-                            <div class="col">
-                                <div class="card bg-dark text-white" style="max-width: 200px;">
-                                    <img src="https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg"
-                                        class="card-img" alt="...">
-                                        <div class="position-absolute top-0 end-0 m-1">
-                                            <span class="badge bg-danger">Likes: 42</span>
-                                        </div>
-                                    <img src="./images/play.png" class="position-absolute top-50 start-50 translate-middle" alt="Play" width="64" height="64">
-                                    <div class="card-img-overlay d-flex flex-column justify-content-end align-items-end ">
-                                        <h5 class="card-title" >Card title</h5>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- card3 -->
-                            <div class="col">
-                                <div class="card bg-dark text-white" style="max-width: 200px;">
-                                    <img src="https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg"
-                                        class="card-img" alt="...">
-                                        <div class="position-absolute top-0 end-0 m-1">
-                                            <span class="badge bg-danger">Likes: 42</span>
-                                        </div>
-                                    <img src="./images/play.png" class="position-absolute top-50 start-50 translate-middle" alt="Play" width="64" height="64">
-                                    <div class="card-img-overlay d-flex flex-column justify-content-end align-items-end ">
-                                        <h5 class="card-title" >Card title</h5>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- next 3  -->
-                            <div class="col">
-                                <div class="card bg-dark text-white" style="max-width: 200px;">
-                                    <img src="https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg"
-                                        class="card-img" alt="...">
-                                        <div class="position-absolute top-0 end-0 m-1">
-                                            <span class="badge bg-danger">Likes: 42</span>
-                                        </div>
-                                    <img src="./images/play.png" class="position-absolute top-50 start-50 translate-middle" alt="Play" width="64" height="64">
-                                    <div class="card-img-overlay d-flex flex-column justify-content-end align-items-end ">
-                                        <h5 class="card-title" >Card title</h5>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card bg-dark text-white" style="max-width: 200px;">
-                                    <img src="https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg"
-                                        class="card-img" alt="...">
-                                        <div class="position-absolute top-0 end-0 m-1">
-                                            <span class="badge bg-danger">Likes: 42</span>
-                                        </div>
-                                    <img src="./images/play.png" class="position-absolute top-50 start-50 translate-middle" alt="Play" width="64" height="64">
-                                    <div class="card-img-overlay d-flex flex-column justify-content-end align-items-end ">
-                                        <h5 class="card-title" >Card title</h5>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card bg-dark text-white" style="max-width: 200px;">
-                                    <img src="https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX380_CR0,1,380,562_.jpg"
-                                        class="card-img" alt="...">
-                                        <div class="position-absolute top-0 end-0 m-1">
-                                            <span class="badge bg-danger">Likes: 42</span>
-                                        </div>
-                                    <img src="./images/play.png" class="position-absolute top-50 start-50 translate-middle" alt="Play" width="64" height="64">
-                                    <div class="card-img-overlay d-flex flex-column justify-content-end align-items-end ">
-                                        <h5 class="card-title" >Card title</h5>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
                     </div>
 
                 </section>
             </div>
         </main>
+        <!--Footer-->
         <footer>
-            <div class="footer">
-            Copyright © 2023. All rights reserved
-        </div>
+            <div class="footer d-flex flex-column">
+                <div class="row w-100">
+                    <div class="social-network col-4 ">
+                        <a href="#"><i class='bx bxl-facebook'></i></a>
+                        <a href="#"><i class='bx bxl-twitter'></i></a>
+                        <a href="#"><i class='bx bxl-instagram'></i></a>
+                        <a href="#"><i class='bx bxl-tiktok'></i></a>
+                    </div>
+                    <div class="col-8 ms-auto text-end">Copyright © 2023. All rights reserved</div>
+                </div>
+            </div>
         </footer>
 
     </div>
+    <script src="jquery/dist/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="script/script.js"></script>
+    <script src="script/login.js"></script>
+    <script src="script/apiHome.js"></script>
 </body>
 
 </html>
