@@ -2451,7 +2451,7 @@ function buildCarousel(jsonData)
                 <div class="box-img">
                 <img class="rounded" src="${jsonData[i].image}" alt="${jsonData[i].title}" >
                 </div>
-                <h4>The Shawshank Redemption</h4>
+                <h4>${jsonData[i].title}</h4>
             </div>
         </div>
         `
