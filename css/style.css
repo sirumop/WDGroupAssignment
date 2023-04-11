@@ -41,7 +41,10 @@ nav ul li a {
 
 
 #menuNav {padding-top:15px;}
-#logo{ width:250px;}
+#logo{ 
+    /* width:250px; */
+    height: 60px ;
+}
 .navbar{padding:0px;}
 .top {
     display: flex;
